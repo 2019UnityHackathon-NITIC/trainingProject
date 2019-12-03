@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     private Move move;
@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     private bool isGround;
     [SerializeField] private float _jumpFlag = 1.5f;
+    [SerializeField] private GameObject spawnPoint;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -26,5 +27,9 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) direction.Add(1);
         move.move(direction);
         if (Input.GetKey(KeyCode.Space)) move.jump(isGround);
+    }
+
+    void Death(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
