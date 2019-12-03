@@ -6,11 +6,13 @@ public class Move : MonoBehaviour
 {
     private Rigidbody2D _controller;
     private Vector2 vector;
-    private int moveSpeed;
-    public Move(int speed)
+    private float moveSpeed;
+    private Vector2 jumpSpeed;
+    public Move(float speed, float jump, Rigidbody2D rb)
     {
-        _controller = GetComponent<Rigidbody2D>();
+        _controller = rb;
         moveSpeed = speed;
+        jumpSpeed = new Vector2(0, jump);
     }
     public void move(List<int> directions) 
     // direction is 0:front, 1:back
@@ -28,4 +30,10 @@ public class Move : MonoBehaviour
         }
         _controller.AddForce(vector);
     }
+
+    public void jump(bool flag){
+        if (flag){
+            _controller.AddForce(jumpSpeed);
+        }
+    } 
 }
