@@ -24,7 +24,7 @@ public class Move : MonoBehaviour
                 vector.x += moveSpeed;
             }
         }else{
-            vector.x = 0;
+            _controller.velocity = new Vector2(0, _controller.velocity.y);
         }
         _controller.AddForce(vector);
     }
