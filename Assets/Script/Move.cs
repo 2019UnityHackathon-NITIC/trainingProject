@@ -20,14 +20,9 @@ public class Move : MonoBehaviour
         int front = directions.IndexOf(0);
         int back = directions.IndexOf(1);
         if (front != back && (front == -1 || back == -1)){
-            if(front == -1){
-                vector.x -= moveSpeed;
-            }else{
-                vector.x += moveSpeed;
-            }
-        }else{
-            _controller.velocity = new Vector2(0, _controller.velocity.y);
-        }
+            if(front == -1) vector.x -= moveSpeed;
+            else vector.x += moveSpeed;
+        }else _controller.velocity = new Vector2(0, _controller.velocity.y);
         _controller.AddForce(vector);
     }
 
