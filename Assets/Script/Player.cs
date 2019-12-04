@@ -37,6 +37,11 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.J)) Shoot();
     }
 
+    void OnTriggerEnter(Collider collider){
+        if(collider.gameObject.tag == "Enemy" || collider.gameObject.tag == "DeathZone"){
+            Death();
+        }
+    }
     void Death(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
