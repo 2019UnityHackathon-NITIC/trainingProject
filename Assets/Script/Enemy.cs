@@ -20,6 +20,7 @@ public class Enemy: MonoBehaviour{
         }
     }
     void Death(){
+        Parameters.killCount += 1;
         Destroy(gameObject);
     }
 }
