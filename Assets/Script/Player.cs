@@ -47,7 +47,10 @@ public class Player : MonoBehaviour
         }
     }
     void Death(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Parameters.lives -= 1;
+        if (Parameters.lives == 0)SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Destroy(this.gameObject);
+        Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
     }
 
     void Shoot(){
