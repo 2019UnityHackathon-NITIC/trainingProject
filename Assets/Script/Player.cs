@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) move.jump(isGround);
         if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
         else if(direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
-        if (Input.GetMouseButtonDown(0)) Shoot();
+        if (Input.GetKey(KeyCode.J)) Shoot();
     }
 
     void Death(){
