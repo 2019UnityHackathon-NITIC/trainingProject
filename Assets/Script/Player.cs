@@ -15,6 +15,7 @@ namespace Script
         [FormerlySerializedAs("_jumpSpeed")] [SerializeField] private float jumpSpeed;
         [FormerlySerializedAs("_moveSpeed")] [SerializeField] private float moveSpeed;
         [FormerlySerializedAs("_jumpFlag")] [SerializeField] private float jumpFlag = 1.5f;
+        [SerializeField] private float maxSpeed = 2f;
         [SerializeField] private GameObject spawnPoint;
         [SerializeField] private GameObject gun;
         [SerializeField] private GameObject bullet;
@@ -23,7 +24,7 @@ namespace Script
         void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _moveController = new MoveController(moveSpeed, jumpSpeed, _rb);
+            _moveController = new MoveController(moveSpeed, jumpSpeed, _rb, maxSpeed);
             _attackDirectionFlag = true;
             _state = "Stop";
         }
@@ -42,7 +43,7 @@ namespace Script
             if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
             else if(direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
             if (Input.GetKey(KeyCode.J)) Shoot();
-        
+            if (Timer.remaindTime < 0) Death();
         }
 
         void OnTriggerEnter(Collider collider){
@@ -55,6 +56,7 @@ namespace Script
             if (Parameters.Lives == 0)SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Destroy(this.gameObject);
             Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
+            Timer.Reset();
         }
 
         void Shoot(){
