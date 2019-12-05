@@ -10,12 +10,15 @@ namespace Script
         private MoveController _moveController;
         private Rigidbody2D _rb;
         private bool _isGround;
+        private bool _canShoot = true;
         private static bool _attackDirectionFlag; // true : front, false, back
         private string _state;
+        private float timeFromLastShot = 0;
         [FormerlySerializedAs("_jumpSpeed")] [SerializeField] private float jumpSpeed;
         [FormerlySerializedAs("_moveSpeed")] [SerializeField] private float moveSpeed;
         [FormerlySerializedAs("_jumpFlag")] [SerializeField] private float jumpFlag = 1.5f;
         [SerializeField] private float maxSpeed = 2f;
+        [SerializeField] private float shotDelay = 0.1f;
         [SerializeField] private GameObject spawnPoint;
         [SerializeField] private GameObject gun;
         [SerializeField] private GameObject bullet;
@@ -32,6 +35,13 @@ namespace Script
         // Update is called once per frame
         void Update()
         {
+            if(!_canShoot){
+                timeFromLastShot += Time.deltaTime;
+                if (timeFromLastShot > shotDelay) {
+                    _canShoot = true;
+                    timeFromLastShot = 0;
+                }
+            }
             if (Mathf.Abs(_rb.velocity.y) > jumpFlag) _isGround = false;
             else _isGround = true;
             List<int> direction = new List<int> { };
@@ -42,7 +52,7 @@ namespace Script
             if (Input.GetKey(KeyCode.Space)) _moveController.Jump(_isGround);
             if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
             else if(direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
-            if (Input.GetKey(KeyCode.J)) Shoot();
+            if (Input.GetKey(KeyCode.J) && _canShoot) Shoot();
             if (Parameters.RemaindTime < 0) Death();
         }
 
@@ -63,6 +73,7 @@ namespace Script
             Vector3 shooter = gun.transform.position;
             if (_attackDirectionFlag) Instantiate(bullet, shooter, Quaternion.identity);
             else Instantiate(swapDirectionBullet, shooter, Quaternion.identity);
+            _canShoot = false;
         }
         void DecideState(List<int> d){
             if(_isGround){
