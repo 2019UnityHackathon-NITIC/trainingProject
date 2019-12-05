@@ -44,6 +44,7 @@ namespace Script
             }
             if (Mathf.Abs(_rb.velocity.y) > jumpFlag) _isGround = false;
             else _isGround = true;
+            print(_rb.velocity.y);
             List<int> direction = new List<int> { };
             if (Input.GetKey(KeyCode.D)) direction.Add(0);
             if (Input.GetKey(KeyCode.A)) direction.Add(1);
