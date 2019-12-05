@@ -9,20 +9,29 @@ namespace Script
         private Vector2 _vector;
         private float _moveSpeed;
         private Vector2 _jumpSpeed;
-        public MoveController(float speed, float jump, Rigidbody2D rb)
+        private float _maxSpeed;
+        public MoveController(float speed, float jump, Rigidbody2D rb, float max)
         {
             _controller = rb;
             _moveSpeed = speed;
             _jumpSpeed = new Vector2(0, jump);
+            _maxSpeed = max;
         }
         public void move(List<int> directions) 
             // direction is 0:front, 1:back
         {
+            
             int front = directions.IndexOf(0);
             int back = directions.IndexOf(1);
             if (front != back && (front == -1 || back == -1)){
-                if(front == -1) _vector.x -= _moveSpeed;
-                else _vector.x += _moveSpeed;
+                if(front == -1){
+                    if (_controller.velocity.x < -_maxSpeed) return;
+                    _vector.x -= _moveSpeed;
+                }
+                else {
+                    if (_controller.velocity.x > _maxSpeed) return;
+                    _vector.x += _moveSpeed;
+                }
             }else _controller.velocity = new Vector2(0, _controller.velocity.y);
             _controller.AddForce(_vector);
         }

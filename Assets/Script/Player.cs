@@ -15,6 +15,7 @@ namespace Script
         [FormerlySerializedAs("_jumpSpeed")] [SerializeField] private float jumpSpeed;
         [FormerlySerializedAs("_moveSpeed")] [SerializeField] private float moveSpeed;
         [FormerlySerializedAs("_jumpFlag")] [SerializeField] private float jumpFlag = 1.5f;
+        [SerializeField] private float maxSpeed = 2f;
         [SerializeField] private GameObject spawnPoint;
         [SerializeField] private GameObject gun;
         [SerializeField] private GameObject bullet;
@@ -23,7 +24,7 @@ namespace Script
         void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _moveController = new MoveController(moveSpeed, jumpSpeed, _rb);
+            _moveController = new MoveController(moveSpeed, jumpSpeed, _rb, maxSpeed);
             _attackDirectionFlag = true;
             _state = "Stop";
         }
