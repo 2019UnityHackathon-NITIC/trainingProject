@@ -20,7 +20,7 @@ namespace Script
         public void move(List<int> directions) 
             // direction is 0:front, 1:back
         {
-            
+            _vector.x = 0;
             int front = directions.IndexOf(0);
             int back = directions.IndexOf(1);
             if (front != back && (front == -1 || back == -1)){
@@ -32,13 +32,13 @@ namespace Script
                     if (_controller.velocity.x > _maxSpeed) return;
                     _vector.x += _moveSpeed;
                 }
+                _controller.velocity += _vector;
             }else _controller.velocity = new Vector2(0, _controller.velocity.y);
-            _controller.AddForce(_vector);
         }
 
         public void Jump(bool flag){
             if (flag){
-                _controller.AddForce(_jumpSpeed);
+                _controller.velocity += _jumpSpeed;
             }
         } 
     }
