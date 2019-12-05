@@ -43,7 +43,7 @@ namespace Script
             if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
             else if(direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
             if (Input.GetKey(KeyCode.J)) Shoot();
-        
+            if (Timer.remaindTime < 0) Death();
         }
 
         void OnTriggerEnter(Collider collider){
@@ -56,6 +56,7 @@ namespace Script
             if (Parameters.Lives == 0)SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Destroy(this.gameObject);
             Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
+            Timer.Reset();
         }
 
         void Shoot(){
