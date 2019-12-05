@@ -8,11 +8,13 @@ namespace Script
         void Start()
         {
             Timer.remaindTime = Timer.initialTime;
+            Parameters.RemaindTime = Timer.remaindTime;
         }
         void Updata()
         {
             float minusTime = Time.deltaTime;
             Timer.remaindTime -= minusTime;
+            Parameters.RemaindTime = Timer.remaindTime;
         }
         static public void Reset()
         {
