@@ -2,3 +2,4 @@ Logs/
 Temp/
 .idea/
 *.cache
+.vs/
