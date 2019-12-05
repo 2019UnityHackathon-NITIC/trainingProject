@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    [SerializeField]
+    public string mainScene = "SampleScene";
+
     public void StartGame()
     {
-        string mainScene = "SampleScene";
         SceneManager.LoadScene(mainScene);
     }
 
