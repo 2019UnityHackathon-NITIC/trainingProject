@@ -8,6 +8,7 @@ namespace Script
     public class Player : MonoBehaviour
     {
         private MoveController _moveController;
+        static private Vector2 spawnTrancelate;
         private Rigidbody2D _rb;
         private bool _isGround;
         private bool _canShoot = true;
@@ -30,6 +31,7 @@ namespace Script
             _moveController = new MoveController(moveSpeed, jumpSpeed, _rb, maxSpeed);
             _attackDirectionFlag = true;
             _state = "Stop";
+            if (spawnPoint != null) Player.spawnTrancelate = spawnPoint.transform.position;
         }
 
         // Update is called once per frame
@@ -44,7 +46,6 @@ namespace Script
             }
             if (Mathf.Abs(_rb.velocity.y) > jumpFlag) _isGround = false;
             else _isGround = true;
-            print(_rb.velocity.y);
             List<int> direction = new List<int> { };
             if (Input.GetKey(KeyCode.D)) direction.Add(0);
             if (Input.GetKey(KeyCode.A)) direction.Add(1);
@@ -57,17 +58,25 @@ namespace Script
             if (Parameters.RemaindTime < 0) Death();
         }
 
-        void OnTriggerEnter(Collider collider){
-            if(collider.gameObject.CompareTag("Enemy") || collider.gameObject.CompareTag("DeathZone")){
+        void OnTriggerEnter2D(Collider2D collider){
+            Debug.Log(collider.gameObject.tag);
+            if(collider.gameObject.CompareTag("DeathZone")){
                 Death();
             }
         }
         void Death(){
             Parameters.Lives -= 1;
-            if (Parameters.Lives == 0)SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            Destroy(this.gameObject);
-            Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
-            Timer.Reset();
+            if (Parameters.Lives == 0) {
+                Parameters.Reset();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                GameObject obj = (GameObject)Resources.Load("Prefab/Player");
+                Instantiate(obj, spawnTrancelate, Quaternion.identity);
+                Timer.Reset();
+            }
         }
 
         void Shoot(){
