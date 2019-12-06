@@ -5,4 +5,7 @@ Temp/
 .vs/
 Library/ShaderCache/
 Library/StateCache/
+Library/EditorInstance.json
+Library/ProtocolInstance.json
+*.log
 
