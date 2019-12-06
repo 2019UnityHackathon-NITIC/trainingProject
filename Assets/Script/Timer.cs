@@ -10,7 +10,7 @@ namespace Script
             Timer.remaindTime = Timer.initialTime;
             Parameters.RemaindTime = Timer.remaindTime;
         }
-        void Updata()
+        void Update()
         {
             float minusTime = Time.deltaTime;
             Timer.remaindTime -= minusTime;
