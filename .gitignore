@@ -4,4 +4,5 @@ Temp/
 *.cache
 .vs/
 Library/ShaderCache/
+Library/StateCache/
 
