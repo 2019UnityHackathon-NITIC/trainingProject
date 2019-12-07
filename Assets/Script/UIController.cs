@@ -1,23 +1,32 @@
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Script
 {
     public class UIController : MonoBehaviour{
-        private Text remaindLives;
-        private int oldLives;
+        [SerializeField] private Text remaindLives;
+        [SerializeField] private Text timer;
+        private Hashtable cache;
         void Start(){
-            remaindLives = GetComponent<Text>();
+            cache = new Hashtable();
             if(remaindLives != null){
                 remaindLives.text = "Lives : "+Parameters.Lives.ToString();
-                oldLives = Parameters.Lives;
+                cache["Lives"] = Parameters.Lives;
+                cache["time"] = (int)Parameters.RemaindTime + 1;
+
+                
             }
         }
         void Update(){
-            if (remaindLives != null && oldLives != Parameters.Lives) {
+            if (remaindLives != null && (int)cache["Lives"] != Parameters.Lives) {
                 remaindLives.text = "Lives : " + Parameters.Lives.ToString();
-                oldLives = Parameters.Lives;
+                cache["Lives"] = Parameters.Lives;
+            }
+            if (timer != null && (int)cache["Lives"] != (int)Parameters.Lives + 1){
+                cache["time"] = (int)Parameters.RemaindTime + 1;
+                timer.text = "Time : " + ((int)cache["time"]).ToString();
             }
         }
     }
