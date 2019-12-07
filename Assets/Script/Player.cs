@@ -50,7 +50,7 @@ namespace Script
             if (Input.GetKey(KeyCode.D)) direction.Add(0);
             if (Input.GetKey(KeyCode.A)) direction.Add(1);
             DecideState(direction);
-            _moveController.move(direction);
+            _moveController.Move(direction);
             if (Input.GetKey(KeyCode.Space)) _moveController.Jump(_isGround);
             if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
             else if(direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;

@@ -1,27 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
+namespace Script
 {
-    [SerializeField]
-    public string mainScene = "SampleScene";
-
-    public void StartGame()
+    public class SceneChanger : MonoBehaviour
     {
-        SceneManager.LoadScene(mainScene);
-    }
+        [SerializeField]
+        public string mainScene = "SampleScene";
 
-    // Start is called before the first frame update
-    void Start()
-    {
+        public void StartGame()
+        {
+            SceneManager.LoadScene(mainScene);
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
         
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
            
+        }
     }
 }

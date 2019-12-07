@@ -15,10 +15,10 @@ namespace Script
             _moveController = new MoveController(moveSpeed, 0, rb, maxSpeed);
         }
         void Update(){
-            _moveController.move(_direction);
+            _moveController.Move(_direction);
         }
         void OnTriggerEnter(Collider collider){
-            if (collider.gameObject.CompareTag("Bullet")){
+            if (collider.gameObject.CompareTag($"Bullet")){
                 hp--;
                 if (hp == 0) Death();
             }

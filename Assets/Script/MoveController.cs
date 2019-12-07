@@ -5,11 +5,11 @@ namespace Script
 {
     public class MoveController : MonoBehaviour
     {
-        private Rigidbody2D _controller;
+        private readonly Rigidbody2D _controller;
         private Vector2 _vector;
-        private float _moveSpeed;
-        private Vector2 _jumpSpeed;
-        private float _maxSpeed;
+        private readonly float _moveSpeed;
+        private readonly Vector2 _jumpSpeed;
+        private readonly float _maxSpeed;
         public MoveController(float speed, float jump, Rigidbody2D rb, float max)
         {
             _controller = rb;
@@ -17,7 +17,7 @@ namespace Script
             _jumpSpeed = new Vector2(0, jump);
             _maxSpeed = max;
         }
-        public void move(List<int> directions) 
+        public void Move(List<int> directions) 
             // direction is 0:front, 1:back
         {
             _vector.x = 0;
