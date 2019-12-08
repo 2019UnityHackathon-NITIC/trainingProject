@@ -10,6 +10,7 @@ namespace Script
         private MoveController _moveController;
         static private Vector2 spawnTrancelate;
         private Rigidbody2D _rb;
+        private Timer _timer;
         private bool _isGround;
         private bool _canShoot = true;
         private static bool _attackDirectionFlag; // true : front, false, back
@@ -31,6 +32,7 @@ namespace Script
             _moveController = new MoveController(moveSpeed, jumpSpeed, _rb, maxSpeed);
             _attackDirectionFlag = true;
             _state = "Stop";
+            _timer = this.GetComponent<Timer>();
             if (spawnPoint != null) Player.spawnTrancelate = spawnPoint.transform.position;
         }
 
@@ -75,7 +77,7 @@ namespace Script
                 Destroy(this.gameObject);
                 GameObject obj = (GameObject)Resources.Load("Prefab/Player");
                 Instantiate(obj, spawnTrancelate, Quaternion.identity);
-                Timer.Reset();
+                _timer.Reset();
             }
         }
 

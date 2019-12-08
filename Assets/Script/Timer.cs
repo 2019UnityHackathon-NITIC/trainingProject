@@ -3,22 +3,22 @@ namespace Script
 {
     class Timer : MonoBehaviour
     {
-        static public float RemainingTime;
-        [SerializeField] static private float initialTime;
+        [SerializeField] private float initialTime;
         void Start()
         {
-            Timer.RemainingTime = Timer.initialTime;
-            Parameters.RemaindTime = Timer.RemainingTime;
+            if(Parameters.initialTime == -1f){
+                Parameters.initialTime = initialTime;
+            }
+            Parameters.RemaindTime = Parameters.initialTime;
         }
         void Update()
         {
-            float minusTime = Time.deltaTime;
-            Timer.RemainingTime -= minusTime;
-            Parameters.RemaindTime = Timer.RemainingTime;
+            Parameters.RemaindTime -= Time.deltaTime;
+            Debug.Log(Parameters.RemaindTime);
         }
-        static public void Reset()
+        public void Reset()
         {
-            RemainingTime = initialTime;
+            Parameters.RemaindTime = Parameters.initialTime;
         }
     }
 }
