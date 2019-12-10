@@ -65,6 +65,9 @@ namespace Script
             if(collider.gameObject.CompareTag("DeathZone")){
                 Death();
             }
+            else if (collider.gameObject.CompareTag("Goal")) {
+                Goal();
+            }
         }
         void Death(){
             Parameters.Lives -= 1;
@@ -95,6 +98,9 @@ namespace Script
                 if (_rb.velocity.y > 0) _state = "Rise";
                 else _state = "Fall";
             }
+        }
+        void Goal(){
+
         }
     }
 }
