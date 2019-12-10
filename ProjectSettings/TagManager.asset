@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DeathZone
   - Block
+  - Goal
   layers:
   - Default
   - TransparentFX
