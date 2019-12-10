@@ -100,7 +100,9 @@ namespace Script
             }
         }
         void Goal(){
-
+            print("goal");
+            GameObject obj = (GameObject)Resources.Load("Prefab/CLEAR");
+            Instantiate(obj, gameObject.transform.position, Quaternion.identity);
         }
     }
 }
