@@ -10,17 +10,26 @@ namespace Script
         [FormerlySerializedAs("_hp")] [SerializeField] private int hp;
         private MoveController _moveController;
         private readonly List<int> _direction = new List<int>{ 1 };
+        private bool _moveReverse = false;
         void Start(){
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             _moveController = new MoveController(moveSpeed, 0, rb, maxSpeed);
         }
         void Update(){
+            print(_moveReverse);
+            if (_moveReverse) _direction [0] = 0;
+            else _direction[0] = 1;
             _moveController.Move(_direction);
         }
-        void OnTriggerEnter(Collider collider){
+        void OnTriggerEnter2D(Collider2D collider){
             if (collider.gameObject.CompareTag($"Bullet")){
                 hp--;
                 if (hp == 0) Death();
+            }
+        }
+        void OnCollisionEnter2D(Collision2D other){
+            if (other.gameObject.CompareTag("Wall")){
+                _moveReverse = !_moveReverse;
             }
         }
         void Death(){

@@ -69,6 +69,11 @@ namespace Script
                 Goal();
             }
         }
+        void OnCollisionEnter2D(Collision2D other){
+            if (other.gameObject.CompareTag("Enemy")){
+                Death();
+            }
+        }
         void Death(){
             Parameters.Lives -= 1;
             if (Parameters.Lives == 0) {
