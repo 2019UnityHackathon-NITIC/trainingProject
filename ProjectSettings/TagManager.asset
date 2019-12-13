@@ -7,6 +7,9 @@ TagManager:
   - DeathZone
   - Block
   - Goal
+  - Enemy
+  - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX
