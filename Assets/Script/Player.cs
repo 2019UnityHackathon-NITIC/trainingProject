@@ -25,6 +25,7 @@ namespace Script
         [SerializeField] private GameObject gun;
         [SerializeField] private GameObject bullet;
         [SerializeField] private GameObject swapDirectionBullet;
+        private bool _goalFlag;
         // Start is called before the first frame update
         void Start()
         {
@@ -61,7 +62,6 @@ namespace Script
         }
 
         void OnTriggerEnter2D(Collider2D collider){
-            Debug.Log(collider.gameObject.tag);
             if(collider.gameObject.CompareTag("DeathZone")){
                 Death();
             }
@@ -105,7 +105,6 @@ namespace Script
             }
         }
         void Goal(){
-            print("goal");
             GameObject obj = (GameObject)Resources.Load("Prefab/CLEAR");
             Instantiate(obj, gameObject.transform.position, Quaternion.identity);
         }

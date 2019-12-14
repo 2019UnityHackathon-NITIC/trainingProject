@@ -481,16 +481,6 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 327095631}
-    - target: {fileID: 1977570322475014386, guid: 0838ea14b6eeda540a0940f2c87d2903,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977570322766903746, guid: 0838ea14b6eeda540a0940f2c87d2903,
-        type: 3}
-      propertyPath: initialTime
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0838ea14b6eeda540a0940f2c87d2903, type: 3}
 --- !u!1001 &1172453133
