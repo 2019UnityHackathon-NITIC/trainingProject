@@ -28,7 +28,7 @@ namespace Script
         }
         void OnCollisionEnter2D(Collision2D other){
             if (other.gameObject.CompareTag("Wall")){
-                _moveReverse = !_moveReverse;
+                _moveReverse = true;
             }
         }
         void Death(){

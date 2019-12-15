@@ -13,7 +13,8 @@ namespace Script{
             if (_timeCounter > _deadTimer) Destroy(gameObject);
         }
         void OnTriggerEnter2D(Collider2D other){
-            if (!other.gameObject.CompareTag("Player")) Destroy(gameObject);
+            if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Block")) Destroy(gameObject);
+            print(other.gameObject.name);
         }
     }
 }
