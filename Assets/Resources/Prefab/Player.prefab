@@ -136,7 +136,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   gun: {fileID: 1438935757164319976}
   bullet: {fileID: 5651438531434805142, guid: 47514ce0b5797434c95572b1fbe8aaf1, type: 3}
-  swapDirectionBullet: {fileID: 0}
+  swapDirectionBullet: {fileID: 2638769080021119160, guid: 828f7dabfa82adf4f910ae56a823e95d,
+    type: 3}
 --- !u!50 &1977570322475014387
 Rigidbody2D:
   serializedVersion: 4

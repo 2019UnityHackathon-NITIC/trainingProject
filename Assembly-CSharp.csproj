@@ -66,6 +66,7 @@
     <Compile Include="Assets\Script\Parameters.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\SceneChanger.cs" />
+    <Compile Include="Assets\Script\SwapBullet.cs" />
     <Compile Include="Assets\Script\Timer.cs" />
     <Compile Include="Assets\Script\UIController.cs" />
     <None Include="Assets\Aekashics Librarium - Megapack III\Terms of use.txt" />
