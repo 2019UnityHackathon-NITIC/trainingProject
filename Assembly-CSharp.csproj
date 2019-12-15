@@ -62,6 +62,7 @@
     <Compile Include="Assets\Script\Bullet.cs" />
     <Compile Include="Assets\Script\Cam.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
+    <Compile Include="Assets\Script\GetScore.cs" />
     <Compile Include="Assets\Script\MoveController.cs" />
     <Compile Include="Assets\Script\Parameters.cs" />
     <Compile Include="Assets\Script\Player.cs" />
