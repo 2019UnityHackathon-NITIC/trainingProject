@@ -16,20 +16,19 @@ namespace Script
             _moveController = new MoveController(moveSpeed, 0, rb, maxSpeed);
         }
         void Update(){
-            print(_moveReverse);
             if (_moveReverse) _direction [0] = 0;
             else _direction[0] = 1;
             _moveController.Move(_direction);
         }
         void OnTriggerEnter2D(Collider2D collider){
-            if (collider.gameObject.CompareTag($"Bullet")){
+            if (collider.gameObject.CompareTag("Bullet")){
                 hp--;
-                if (hp == 0) Death();
+                if (hp < 0) Death();
             }
         }
         void OnCollisionEnter2D(Collision2D other){
             if (other.gameObject.CompareTag("Wall")){
-                _moveReverse = !_moveReverse;
+                _moveReverse = true;
             }
         }
         void Death(){

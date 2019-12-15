@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1438935757164319976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7256963938736204932}
+  m_Layer: 9
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7256963938736204932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438935757164319976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.185, y: -0.187, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1977570322475014381}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1977570322475014383
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +44,7 @@ GameObject:
   - component: {fileID: 1977570322475014387}
   - component: {fileID: 1977570322475014380}
   - component: {fileID: 1977570322766903746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -33,6 +63,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 7757569480448177693}
+  - {fileID: 7256963938736204932}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,15 +128,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d45b2062857984eba1b770f5fbe4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 8
-  moveSpeed: 3
+  jumpSpeed: 5
+  moveSpeed: 5
   jumpFlag: 0.07
   maxSpeed: 2
   shotDelay: 0.1
   spawnPoint: {fileID: 0}
-  gun: {fileID: 0}
-  bullet: {fileID: 0}
-  swapDirectionBullet: {fileID: 0}
+  gun: {fileID: 1438935757164319976}
+  bullet: {fileID: 5651438531434805142, guid: 47514ce0b5797434c95572b1fbe8aaf1, type: 3}
+  swapDirectionBullet: {fileID: 2638769080021119160, guid: 828f7dabfa82adf4f910ae56a823e95d,
+    type: 3}
 --- !u!50 &1977570322475014387
 Rigidbody2D:
   serializedVersion: 4
@@ -172,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df92c0128749a54dae1b0dbf0cf97a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTime: 2
+  initialTime: 30
 --- !u!1 &4863218499462521937
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +216,7 @@ GameObject:
   - component: {fileID: 7757569480448177693}
   - component: {fileID: 9020654045563035159}
   - component: {fileID: 3682699827932314907}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MainCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

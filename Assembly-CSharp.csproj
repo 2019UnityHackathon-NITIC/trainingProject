@@ -59,12 +59,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Bullet.cs" />
     <Compile Include="Assets\Script\Cam.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
+    <Compile Include="Assets\Script\GetScore.cs" />
     <Compile Include="Assets\Script\MoveController.cs" />
     <Compile Include="Assets\Script\Parameters.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\SceneChanger.cs" />
+    <Compile Include="Assets\Script\SwapBullet.cs" />
     <Compile Include="Assets\Script\Timer.cs" />
     <Compile Include="Assets\Script\UIController.cs" />
     <None Include="Assets\Aekashics Librarium - Megapack III\Terms of use.txt" />
