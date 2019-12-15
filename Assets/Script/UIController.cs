@@ -18,11 +18,11 @@ namespace Script
             }
             if(timer != null){
                 timer.text = "Time : " + Parameters.RemaindTime.ToString();
-                cache["time"] = (int)Parameters.RemaindTime + 1;
+                cache["Time"] = (int)Parameters.RemaindTime + 1;
             }
             if(killCounter != null){
                 killCounter.text = "Kill : " + Parameters.KillCount.ToString();
-                cache["kill"] = Parameters.KillCount;
+                cache["Kill"] = Parameters.KillCount;
             }
         }
         void Update(){
@@ -34,7 +34,7 @@ namespace Script
                 cache["time"] = (int)Parameters.RemaindTime + 1;
                 timer.text = "Time : " + ((int)cache["time"]).ToString();
             }
-            if (killCounter != null && (int)cache["kill"] != Parameters.KillCount){
+            if (killCounter != null && (int)cache["Kill"] != Parameters.KillCount){
                 cache["kill"] = Parameters.KillCount;
                 killCounter.text = "kill : " + ((int)cache["kill"]).ToString();
             }
